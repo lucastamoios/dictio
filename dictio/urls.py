@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from words.views import SearchView 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("words/", include("words.urls")),
+    # this is inside the /words/ domain, but we also want it to be the root
+    path("", SearchView.as_view(), name="search")
 ]

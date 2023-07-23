@@ -1,3 +1,6 @@
 Django==4.2.3
 psycopg2-binary==2.9.6
 django-simple-history==3.3.0
+python-docx==0.8.11
+alive-progress==3.1.4
+django-tailwind==3.6.0

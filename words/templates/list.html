@@ -1,0 +1,36 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+		<div class="relative h-12 w-12 py-5 pl-4">
+			<div class="absolute h-16 w-16">
+				<a href="{% url 'search' %}">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+				</svg>
+			</div>
+		  </div>
+
+		<div class="container mx-auto">
+			<div class="flex flex-col">
+				{% if words %}
+					{% autoescape off %}
+					{% for w in words %}
+						<span class="m-5 text-2xl">{{ w.word }} {{ w.meta }} {{ w.definition }}</span>
+					{% endfor %}
+					{% endautoescape %}
+				{% else %}
+					<span class="m-5 text-2xl">Nenhuma palavra encontrada</span>
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>
