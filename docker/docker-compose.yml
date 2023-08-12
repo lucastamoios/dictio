@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  web:
+    image: lucastamoios/dictio
+    command: "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST
+      - DB_NAME
+      - DB_PASS
+      - DB_USER
+    ports:
+      - "8000:8000"
+
+  tailwind:
+    image: lucastamoios/dictio
+    command: "python manage.py tailwind start"
+    # Without tty, no stdin, and tailwind watcher aborts
+    # https://github.com/tailwindlabs/tailwindcss/issues/5324
+    tty: true
